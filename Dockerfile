@@ -16,8 +16,8 @@ RUN pnpm install
 # Copy the rest of the application files
 COPY . .
 
-# Run Prisma migrations before building the app
-RUN pnpm prisma migrate deploy
+# Generate Prisma client
+RUN pnpm prisma generate
 
 # Build the NestJS application
 RUN pnpm run build
@@ -26,5 +26,5 @@ RUN pnpm run build
 EXPOSE 3000
 
 # Command to run the application
-CMD ["node", "dist/main"]
+CMD ["node", "dist/src/main"]
 
